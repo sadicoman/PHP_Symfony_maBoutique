@@ -75,11 +75,19 @@
 				</div>
 			</nav>
 		</header>
+		<main>
+			<div class="container">
+				{% for label, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="alert alert-{{ label }} mt-4">
+							{{ message }}
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
 
-		{% block body %}{% endblock %}
-
-		<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
-		<script src="{{ asset('assets/js/global.js') }}"></script>
+			{% block body %}{% endblock %}
+		</main>
 		<!-- FOOTER -->
 		<footer class="container">
 			<p>&copy; 2017–2024 Ma Boutique
@@ -88,6 +96,7 @@
 				<a href="#">CGU</a>
 			</p>
 		</footer>
-
+		<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+		<script src="{{ asset('assets/js/global.js') }}"></script>
 	</body>
 </html>
