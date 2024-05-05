@@ -16,7 +16,7 @@ class AccoutController extends AbstractController
     #[Route('/compte', name: 'app_account')]
     public function index(): Response
     {
-        return $this->render('accout/index.html.twig');
+        return $this->render('account/index.html.twig');
     }
 
     #[Route('/compte/modifier-mot-de-passe', name: 'app_account-modify_pwd')]
@@ -39,7 +39,7 @@ class AccoutController extends AbstractController
             );
         }
 
-        return $this->render('accout/password.html.twig', [
+        return $this->render('account/password.html.twig', [
             'modifyPwd' => $form->createView(),
         ]);
     }
