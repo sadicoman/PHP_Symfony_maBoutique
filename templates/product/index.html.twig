@@ -23,10 +23,10 @@
 				<p class="card-text mb-3">{{ product.pricewt | price }}</p>
 
 				{{ product.description | raw }}
-				<button class="mt-3 btn btn-success">
+				<a href="{{ path('app_cart_add', { id : product.id }) }}" class="mt-3 btn btn-success">
 					<span>Ajouter au panier</span>
 					<i data-feather="shopping-cart"></i>
-				</button>
+				</a>
 
 			</div>
 		</div>

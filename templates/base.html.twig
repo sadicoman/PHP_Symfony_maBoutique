@@ -66,8 +66,13 @@
 									<i data-feather="user"></i>
 								</a>
 							{% endif %}
-							<a href="">
+							<a class="position-relative" href="{{ path('app_cart') }}">
 								<i data-feather="shopping-cart"></i>
+								{% if fullCartQuantity %}
+									<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+										{{  fullCartQuantity }}
+									</span>
+								{% endif %}
 							</a>
 						</div>
 					</div>

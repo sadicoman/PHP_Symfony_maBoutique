@@ -21,7 +21,7 @@
 							<div class="card-body">
 								<h5 class="card-title">{{ product.name }}</h5>
 								<p class="card-text">{{ product.pricewt | price }}</p>
-								{# <a href="#" class="btn btn-primary">Add</a> #}
+								<a href="{{ path('app_cart_add', { id : product.id }) }}" class="btn btn-primary">Add</a>
 							</div>
 						</div>
 					</a>
