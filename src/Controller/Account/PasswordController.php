@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Account;
 
 use App\Form\PasswordUserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
-class AccoutController extends AbstractController
-{
-    #[Route('/compte', name: 'app_account')]
-    public function index(): Response
+class PasswordController extends AbstractController{
+
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
     {
-        return $this->render('account/index.html.twig');
+        $this->entityManager = $entityManager;
     }
 
     #[Route('/compte/modifier-mot-de-passe', name: 'app_account-modify_pwd')]
-    public function password(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager): Response
+    public function index(Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = $this->getUser();
 
@@ -31,7 +31,7 @@ class AccoutController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $this->entityManager->flush();
 
             $this->addFlash(
                 'success',
@@ -39,8 +39,11 @@ class AccoutController extends AbstractController
             );
         }
 
-        return $this->render('account/password.html.twig', [
+        return $this->render('account/password/index.html.twig', [
             'modifyPwd' => $form->createView(),
         ]);
     }
+
+
 }
+?>
