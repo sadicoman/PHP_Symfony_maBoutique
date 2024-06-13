@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Carrier;
 use App\Entity\Category;
+use App\Entity\Order;
 use App\Entity\Product;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -31,9 +32,10 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-list', User::class);
-        yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Category::class);
-        yield MenuItem::linkToCrud('Produits', 'fas fa-list', Product::class);
-        yield MenuItem::linkToCrud('Transporteurs', 'fas fa-list', Carrier::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa fa-users', User::class);
+        yield MenuItem::linkToCrud('Catégories', 'fa fa-tags', Category::class);
+        yield MenuItem::linkToCrud('Produits', 'fa fa-boxes', Product::class);
+        yield MenuItem::linkToCrud('Transporteurs', 'fa fa-shipping-fast', Carrier::class);
+        yield MenuItem::linkToCrud('Commandes', 'fa fa-receipt', Order::class);
     }
 }

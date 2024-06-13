@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\addressRepository;
+use App\Repository\AddressRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: addressRepository::class)]
+#[ORM\Entity(repositoryClass: AddressRepository::class)]
 class Address
 {
     #[ORM\Id]
@@ -37,6 +37,11 @@ class Address
     #[ORM\ManyToOne(inversedBy: 'addresses')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
+
+    public function __toString()
+    {
+        return $this->getFirstname() . ' ' . $this->getLastname() . '<br/>' . $this->getAddress() . '<br/>' . $this->getCity() . ' - ' . $this->getCountry();
+    }
 
     public function getId(): ?int
     {
