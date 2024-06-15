@@ -4,9 +4,10 @@
 	<h3>Commande n°
 		{{order.id }}</h3>
 	<div>{{include('admin/state.html.twig', {field : {'value' : order.state}})}}</div>
-	<span>Passée le :
-		{{order.createdAt| date('d/m/y')}}</span>
-
+	<p>Passée le :
+		{{order.createdAt| date('d/m/y')}}</p>
+	<p>Stripe session Id :
+		{{order.stripeSessionId}}</p>
 	<div class="row my-4">
 		<div class="col-md-6">
 			<strong>Adresse de livraison :</strong><br>
